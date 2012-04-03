@@ -1,0 +1,4 @@
+Installation:
+	git clone git://github.com/kuoney/dotfiles.git ~/.dotfiles
+	cd ~/.dotfiles
+	./update_links.pl
