@@ -1,1 +1,3 @@
 orig/
+# netrw plugin (system?) modifies this
+vim/.netrwhist
