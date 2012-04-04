@@ -12,6 +12,7 @@ set nohlsearch	" do no highlight search results
 set ruler		" show cursor position
 set showmatch	" show matching brackets
 set incsearch	" incremental search
+set history=100	" command line history
 
 syntax on
 
@@ -19,6 +20,11 @@ syntax on
 """"""""""""""""
 " Pathogen
 call pathogen#infect()
+filetype plugin indent on	" Has to happen after the pathogen line
 
 " fugitive
 set statusline=%{fugitive#statusline()}
+
+" NERDTree
+set encoding=utf-8	" Shows NERDTree properly on putty
+set fileencodings=utf-8,iso-8859-2,win-1250
