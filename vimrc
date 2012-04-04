@@ -13,6 +13,8 @@ set ruler		" show cursor position
 set showmatch	" show matching brackets
 set incsearch	" incremental search
 set history=100	" command line history
+set modelines=0	" disable modelines
+set nomodeline	" disable modelines
 
 syntax on
 
