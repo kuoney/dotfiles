@@ -23,6 +23,7 @@ sub check_skip {
 	my $f = shift;
 	return 1 if (($f =~ /^\./) ||
 				 ($f eq basename($0)) ||
+				 ($f eq "README") ||
 				 ($f eq "orig"));
 	return 0;
 }
