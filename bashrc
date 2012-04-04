@@ -23,7 +23,8 @@ export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)
 
 # aliases
 alias vi='vim -X'
-# highlight search term, skip directories
+# highlight search term, skip directories. tty ensures the output behaves nicely
+# with pipes
 alias egrep='egrep --color=tty -d skip'
 alias fgrep='fgrep --color=tty -d skip'
 alias grep='grep --color=tty -d skip'
@@ -44,6 +45,10 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
+# colorful files
+alias ls='ls --color=tty'
+alias ll='ls -l'
+eval `dircolors -b`
 
 # functions
 
