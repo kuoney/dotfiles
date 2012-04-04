@@ -4,3 +4,6 @@
 [submodule "vim/bundle/DirDiff"]
 	path = vim/bundle/DirDiff
 	url = https://github.com/duellj/DirDiff.vim.git
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
