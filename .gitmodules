@@ -10,3 +10,6 @@
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/threesome"]
+	path = vim/bundle/threesome
+	url = https://github.com/sjl/threesome.vim.git
