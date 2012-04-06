@@ -30,3 +30,6 @@ set statusline=%{fugitive#statusline()}
 " NERDTree
 set encoding=utf-8	" Shows NERDTree properly on putty
 set fileencodings=utf-8,iso-8859-2,win-1250
+
+" cecscope
+autocmd! FileType qf set winheight=10 " min quickfix window height
