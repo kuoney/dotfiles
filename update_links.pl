@@ -60,9 +60,8 @@ while (my $file = readdir(DIR)) {
 
 		save_orig (readlink ($dotfile), $file);
 		unlink ($dotfile) or die $!;
-		create_link ($dotfile, $file);
 	} else {
 		save_orig ($dotfile, $file);
-		create_link ($dotfile, $file);
 	}
+	create_link ($dotfile, $file);
 }
