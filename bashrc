@@ -50,11 +50,25 @@ alias ls='ls --color=tty'
 alias ll='ls -l'
 eval `dircolors -b`
 
+# ltib aliases
+alias scpr='./ltib -m prep -p'
+alias scb='./ltib -m scbuild -p'
+alias scd='./ltib -m scdeploy -p'
+
 # functions
 
 # show mounts nicely aligned
 function mountnice() {
     (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t
+}
+
+function scall() {
+	echo "$@"
+	scpr "$@" && scb "$@" && scd "$@"
+}
+
+function scbd() {
+	scb "$@" && scd "$@"
 }
 
 [[ -e $HOME/.rvm/bin ]] && PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
