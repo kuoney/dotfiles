@@ -6,7 +6,6 @@ set nocompatible	" use vim, forget about vi
 set exrc		" allow vimrc files in specific directories
 set visualbell	" silence the bell, use a flash instead
 set tabstop=8	" set tab to 4 spaces
-set background=dark " set background to dark
 set textwidth=80	" wrap text after 80 characters
 set nohlsearch	" do no highlight search results
 set ruler		" show cursor position
@@ -33,3 +32,7 @@ set fileencodings=utf-8,iso-8859-2,win-1250
 
 " cecscope
 autocmd! FileType qf set winheight=10 " min quickfix window height
+
+" solarized - color schemes / syn highlighting
+set background=dark
+colorscheme solarized
