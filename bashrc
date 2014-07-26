@@ -55,6 +55,12 @@ alias scpr='./ltib -m prep -p'
 alias scb='./ltib -m scbuild -p'
 alias scd='./ltib -m scdeploy -p'
 
+# xterm setup for putty
+if [ "$TERM" = xterm ]
+then
+	export TERM=xterm-256color
+fi
+
 # functions
 
 # show mounts nicely aligned
