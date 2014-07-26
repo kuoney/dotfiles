@@ -49,3 +49,5 @@ autocmd! FileType qf set winheight=10 " min quickfix window height
 " solarized - color schemes / syn highlighting
 set background=dark
 colorscheme solarized
+" Use F5 key to toggle between dark and light backgrounds
+call togglebg#map("<F5>")
