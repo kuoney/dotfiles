@@ -17,6 +17,18 @@ set nomodeline	" disable modelines
 
 syntax enable
 
+" Windows Section
+"""""""""""""""""
+if has('win32') || has('win64')
+	set runtimepath=$HOME/Documents/dotfiles/vim,$VIM/vimfiles,$VIMRTUNTIME,$VIM/vimfiles/after,$HOME/Documents/dotfiles/vim/after
+	set nobackup
+	set nowritebackup
+endif
+
+if has('gui_running')
+	set guifont=Courier_New:h10:cANSI
+endif
+
 " Plugin Section
 """"""""""""""""
 " Pathogen
