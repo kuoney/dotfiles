@@ -15,7 +15,7 @@ set history=100	" command line history
 set modelines=0	" disable modelines
 set nomodeline	" disable modelines
 
-syntax on
+syntax enable
 
 " Plugin Section
 """"""""""""""""
