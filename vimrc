@@ -20,7 +20,8 @@ syntax enable
 " Windows Section
 """""""""""""""""
 if has('win32') || has('win64')
-	set runtimepath=$HOME/Documents/dotfiles/vim,$VIM/vimfiles,$VIMRTUNTIME,$VIM/vimfiles/after,$HOME/Documents/dotfiles/vim/after
+	let $DOTFILES = $HOME.'/Documents/dotfiles/vim'
+	set runtimepath=$DOTFILES,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$DOTFILES/after
 	set nobackup
 	set nowritebackup
 endif
