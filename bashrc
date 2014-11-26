@@ -85,3 +85,9 @@ function scbd() {
 if [ -x /usr/bin/dircolors ];
 	then test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
+
+# add local bin to the PATH, usually for repo
+if [ -d "${HOME}/bin" ];
+then
+	export PATH=${PATH}:${HOME}/bin
+fi
