@@ -27,7 +27,7 @@ if has('win32') || has('win64')
 endif
 
 if has('gui_running')
-	set guifont=Courier_New:h12:cANSI
+	set guifont=Consolas:h12
 endif
 
 " Plugin Section
