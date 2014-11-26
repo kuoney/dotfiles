@@ -79,3 +79,9 @@ function scbd() {
 
 [[ -e $HOME/.rvm/bin ]] && PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+# ls fix for solarized dircolors. From
+# http://michaelheap.com/getting-solarized-working-on-ubuntu/
+if [ -x /usr/bin/dircolors ];
+	then test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
