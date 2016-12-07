@@ -14,13 +14,14 @@ set incsearch	" incremental search
 set history=100	" command line history
 set modelines=0	" disable modelines
 set nomodeline	" disable modelines
+set noundofile	" do not create .un~ file for undo history
 
 syntax enable
 
 " Windows Section
 """""""""""""""""
 if has('win32') || has('win64')
-	let $DOTFILES = $HOME.'/Documents/dotfiles/vim'
+	let $DOTFILES = 'E:/oney/dotfiles/vim'
 	set runtimepath=$DOTFILES,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$DOTFILES/after
 	set nobackup
 	set nowritebackup
