@@ -11,16 +11,28 @@ export LC_ALL="en_US.utf8"
 # Source global bashrc
 [ -f /etc/bash.bashrc ] && . /etc/bash.bashrc
 
+# Enable and use Redhat Software Collections
+for dir in /opt/rh/*/
+do
+	[ -f ${dir}/enable ] && source ${dir}/enable
+done
+
 # Clever tab completion
 [ -f /etc/bash_completion ] && . /etc/bash_completion
+
+# Add git-prompt from the special collections
+[ -f /opt/rh/git19/root/usr/share/git-core/contrib/completion/git-prompt.sh ] && \
+	. /opt/rh/git19/root/usr/share/git-core/contrib/completion/git-prompt.sh
+
+[ -f /opt/rh/git19/root/etc/bash_completion.d/git ] && \
+	. /opt/rh/git19/root/etc/bash_completion.d/git
 
 # Welcome message
 date
 [ -f /usr/games/fortune ] && /usr/games/fortune
 
 # prompt, including git info
-# export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
-export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]\[\033[00m\]\$ '
+export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
 
 # aliases
 alias vi='vim -X'
