@@ -19,8 +19,7 @@ date
 [ -f /usr/games/fortune ] && /usr/games/fortune
 
 # prompt, including git info
-# export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
-export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]\[\033[00m\]\$ '
+export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
 
 # aliases
 alias vi='vim -X'
