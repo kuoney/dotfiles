@@ -1,15 +1,16 @@
 # kuoney's bash settings #
 ##########################
 
+# Source global bashrc
+[ -f /etc/bashrc ] && . /etc/bashrc
+[ -f /etc/bash.bashrc ] && . /etc/bash.bashrc
+
 # Return if shell is non-interactive
 [ -z "$PS1" ] && return
 
 # language - so gcc doesn't throw up weird characters !
 export LANG="en_US.utf8"
 export LC_ALL="en_US.utf8"
-
-# Source global bashrc
-[ -f /etc/bash.bashrc ] && . /etc/bash.bashrc
 
 # Enable and use Redhat Software Collections
 for dir in /opt/rh/*/
