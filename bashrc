@@ -30,6 +30,8 @@ done
 
 # Welcome message
 date
+# Show the weather
+curl -s wttr.in/Raleigh | head -7
 [ -f /usr/games/fortune ] && /usr/games/fortune
 
 # prompt, including git info
@@ -49,6 +51,7 @@ set -o vi			# including the command line
 
 # history control
 export HISTSIZE=20000
+export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 
 # colorful man pages
