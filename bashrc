@@ -36,6 +36,7 @@ curl -s wttr.in/Raleigh | head -7
 
 # prompt, including git info
 export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+export GIT_PS1_SHOWDIRTYSTATE=1
 
 # aliases
 alias vi='vim -X'
@@ -108,4 +109,12 @@ fi
 if [ -d "${HOME}/bin" ];
 then
 	export PATH=${PATH}:${HOME}/bin
+fi
+
+if [ "$(hostname)" == "mvlrhel7" ]
+then
+	BBOT=/home/buildbot
+	eval "$(${BBOT}/bin/bb/bin/bb init -)"
+	source ${BBOT}/bin/git-subrepo/.rc
+	export PATH=${PATH}:/home/buildbot/bin
 fi
