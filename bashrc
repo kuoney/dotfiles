@@ -118,3 +118,9 @@ then
 	source ${BBOT}/bin/git-subrepo/.rc
 	export PATH=${PATH}:/home/buildbot/bin
 fi
+if [ "$(hostname)" == "juno-1" ]
+then
+	eval "$(${HOME}/tmp/bb/bin/bb init -)"
+	source ${HOME}/tmp/git-subrepo/.rc
+fi
+
