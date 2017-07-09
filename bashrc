@@ -69,11 +69,6 @@ alias ll='ls -l'
 # From https://github.com/trapd00r/LS_COLORS/
 eval $(dircolors -b $HOME/.dircolors)
 
-# ltib aliases
-alias scpr='./ltib -m prep -p'
-alias scb='./ltib -m scbuild -p'
-alias scd='./ltib -m scdeploy -p'
-
 # xterm setup for putty
 if [ "$TERM" = xterm ]
 then
@@ -85,15 +80,6 @@ fi
 # show mounts nicely aligned
 function mountnice() {
     (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t
-}
-
-function scall() {
-	echo "$@"
-	scpr "$@" && scb "$@" && scd "$@"
-}
-
-function scbd() {
-	scb "$@" && scd "$@"
 }
 
 [[ -e $HOME/.rvm/bin ]] && PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
@@ -123,4 +109,3 @@ then
 	eval "$(${HOME}/tmp/bb/bin/bb init -)"
 	source ${HOME}/tmp/git-subrepo/.rc
 fi
-
