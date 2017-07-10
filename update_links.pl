@@ -24,6 +24,7 @@ sub check_skip {
 	return 1 if (($f =~ /^\./) ||
 				 ($f eq basename($0)) ||
 				 ($f eq "README") ||
+				 ($f eq "host") ||
 				 ($f eq "orig"));
 	return 0;
 }

@@ -12,21 +12,8 @@
 export LANG="en_US.utf8"
 export LC_ALL="en_US.utf8"
 
-# Enable and use Redhat Software Collections
-for dir in /opt/rh/*/
-do
-	[ -f ${dir}/enable ] && source ${dir}/enable
-done
-
 # Clever tab completion
 [ -f /etc/bash_completion ] && . /etc/bash_completion
-
-# Add git-prompt from the special collections
-[ -f /opt/rh/git19/root/usr/share/git-core/contrib/completion/git-prompt.sh ] && \
-	. /opt/rh/git19/root/usr/share/git-core/contrib/completion/git-prompt.sh
-
-[ -f /opt/rh/git19/root/etc/bash_completion.d/git ] && \
-	. /opt/rh/git19/root/etc/bash_completion.d/git
 
 # Welcome message
 date
@@ -66,8 +53,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # colorful files
 alias ls='ls --color=tty'
 alias ll='ls -l'
-# From https://github.com/trapd00r/LS_COLORS/
-eval $(dircolors -b $HOME/.dircolors)
 
 # xterm setup for putty
 if [ "$TERM" = xterm ]
@@ -82,9 +67,9 @@ function mountnice() {
     (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t
 }
 
-[[ -e $HOME/.rvm/bin ]] && PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-
+# TODO: Fix one of the following two.
+# From https://github.com/trapd00r/LS_COLORS/
+eval $(dircolors -b $HOME/.dircolors)
 # ls fix for solarized dircolors. From
 # http://michaelheap.com/getting-solarized-working-on-ubuntu/
 if [ -x /usr/bin/dircolors ];
@@ -97,15 +82,4 @@ then
 	export PATH=${PATH}:${HOME}/bin
 fi
 
-if [ "$(hostname)" == "mvlrhel7" ]
-then
-	BBOT=/home/buildbot
-	eval "$(${BBOT}/bin/bb/bin/bb init -)"
-	source ${BBOT}/bin/git-subrepo/.rc
-	export PATH=${PATH}:/home/buildbot/bin
-fi
-if [ "$(hostname)" == "juno-1" ]
-then
-	eval "$(${HOME}/tmp/bb/bin/bb init -)"
-	source ${HOME}/tmp/git-subrepo/.rc
-fi
+[ -f ${HOME}/.dotfiles/host/$(hostname).bashrc ] && . ${HOME}/.dotfiles/host/$(hostname).bashrc
