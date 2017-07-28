@@ -82,4 +82,5 @@ then
 	export PATH=${PATH}:${HOME}/bin
 fi
 
+[ -f ${HOME}/.dotfiles/host/$(domainname).bashrc ] && .  ${HOME}/.dotfiles/host/$(domainname).bashrc
 [ -f ${HOME}/.dotfiles/host/$(hostname).bashrc ] && . ${HOME}/.dotfiles/host/$(hostname).bashrc
