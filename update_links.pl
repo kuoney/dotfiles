@@ -19,7 +19,7 @@ sub create_link {
 	symlink (abs_path($f), $df) or die $!;
 }
 
-sub check_skip {
+sub should_skip {
 	my $f = shift;
 	return 1 if (($f =~ /^\./) ||
 				 ($f eq basename($0)) ||
@@ -37,18 +37,18 @@ sub check_skip {
 # 	MOVE the file to pwd/orig
 # 	LN   from $HOME/$file to pwd/$file
 
-mkdir "./orig",0755 if (! -e "./orig");
+mkdir "./orig",0755 unless (-e "./orig");
 
 opendir (DIR, '.') or die $!;
 
 while (my $file = readdir(DIR)) {
-	next if check_skip ("$file");
+	next if should_skip ("$file");
 
 	print "[ PROC ] $file\n";
 
 	my $dotfile = "$HOME" . "/." . "$file";
 	# does the dot file exist in $HOME ? NO, create_link()
-	if (! -e "$dotfile") {
+	unless (-e "$dotfile") {
 		create_link ($dotfile, $file);
 		next;
 	}
