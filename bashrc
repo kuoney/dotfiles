@@ -24,6 +24,8 @@ curl -s wttr.in/Raleigh | head -7
 # prompt, including git info
 export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
 export GIT_PS1_SHOWDIRTYSTATE=1
+# Do not try to launch gnome-ssh-askpass when pushing commits
+unset SSH_ASKPASS
 
 # aliases
 alias vi='vim -X'
