@@ -11,6 +11,6 @@ function setup-environment() {
 	export CROSS_COMPILE=${TOOLCHAIN_ROOT}/BCG/crosstools-aarch64-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin/aarch64-buildroot-linux-gnu-
 }
 
-export PATH=/tools/bin:/tools/nwsoft/bin:${PATH}
+export PATH=/tools/bin:/tools/nwsoft/bin:/projects/hnd/tools/bin:${PATH}
 # __git_ps1 doesn't exist on this machine so use the custom one
 export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\$ '
