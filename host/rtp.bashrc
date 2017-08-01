@@ -1,8 +1,3 @@
-# the git installation is severely lacking on this host
-function parse_git_branch() {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
 function setup-environment() {
 	export ARCH=arm64
 	export TOOLCHAIN_ROOT=/projects/hnd/tools/linux/
@@ -12,5 +7,11 @@ function setup-environment() {
 }
 
 export PATH=/tools/bin:/tools/nwsoft/bin:/projects/hnd/tools/bin:${PATH}
-# __git_ps1 doesn't exist on this machine so use the custom one
-export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\$ '
+
+GIT_CONTRIB_DIR=/projects/bca_ent_tools/contrib/git
+GIT_CONTRIB_FILES='git-completion.bash git-prompt.sh'
+
+for file in $GIT_CONTRIB_FILES
+do
+	[[ -r $GIT_CONTRIB_DIR/$file ]] && source $GIT_CONTRIB_DIR/$file
+done
