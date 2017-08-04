@@ -1,0 +1,1 @@
+Kursads-MacBook-Pro.local.bashrc

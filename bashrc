@@ -69,9 +69,6 @@ function mountnice() {
     (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t
 }
 
-# TODO: Fix one of the following two.
-# From https://github.com/trapd00r/LS_COLORS/
-eval $(dircolors -b $HOME/.dircolors)
 # ls fix for solarized dircolors. From
 # http://michaelheap.com/getting-solarized-working-on-ubuntu/
 if [ -x /usr/bin/dircolors ];
