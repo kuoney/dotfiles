@@ -6,6 +6,9 @@ unalias ls
 export PS1=
 
 if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+	GIT_PROMPT_THEME=Solarized
+	GIT_PROMPT_END_USER=" ${BoldBlue}${Time12a}${ResetColor} $ "
+	GIT_PROMPT_END_ROOT=" ${BoldBlue}${Time12a}${ResetColor} # "
 	__GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
 	source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi
