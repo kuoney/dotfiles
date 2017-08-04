@@ -8,6 +8,13 @@ function setup-environment() {
 
 export PATH=/tools/bin:/tools/nwsoft/bin:/projects/hnd/tools/bin:${PATH}
 
-GIT_PROMPT_ONLY_IN_REPO=1
 GIT_PROMPT_THEME=Single_line_Solarized
 source ~/.bash-git-prompt/gitprompt.sh
+
+GIT_CONTRIB_DIR=/projects/bca_ent_tools/contrib/git
+GIT_CONTRIB_FILES='git-completion.bash'
+
+for file in $GIT_CONTRIB_FILES
+do
+	[[ -r $GIT_CONTRIB_DIR/$file ]] && source $GIT_CONTRIB_DIR/$file
+done
