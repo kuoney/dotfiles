@@ -9,6 +9,8 @@ function setup-environment() {
 export PATH=/tools/bin:/tools/nwsoft/bin:/projects/hnd/tools/bin:${PATH}
 
 GIT_PROMPT_THEME=Single_line_Solarized
+GIT_PROMPT_SHOW_UPSTREAM=0
+GIT_PROMPT_SHOW_UNTRACKED_FILES=no
 source ~/.bash-git-prompt/gitprompt.sh
 
 GIT_CONTRIB_DIR=/projects/bca_ent_tools/contrib/git
