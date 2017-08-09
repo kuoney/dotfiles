@@ -7,6 +7,8 @@ export PS1=
 
 if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
 	GIT_PROMPT_THEME=Single_line_Solarized
+	GIT_PROMPT_SHOW_UPSTREAM=0
+	GIT_PROMPT_SHOW_UNTRACKED_FILES=no
 	__GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
 	source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi
@@ -15,3 +17,5 @@ source /usr/local/etc/bash_completion.d/git-completion.bash
 # Alternative to dircolors on Mac
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
