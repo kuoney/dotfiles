@@ -55,3 +55,7 @@ call togglebg#map("<F5>")
 
 " Force all .md files to be markdown instead of modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" DirDiff
+let g:DirDiffExcludes = ".git,.svn,CVS,*.class,*.exe,.*.swp,*.o"
+let g:DirDiffIgnore = "Id:,Revision:,Date:"
