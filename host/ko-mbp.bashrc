@@ -19,3 +19,13 @@ export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+PATH="/Users/ko889424/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/ko889424/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/ko889424/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/ko889424/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/ko889424/perl5"; export PERL_MM_OPT;
+
+eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+# For MacPorts
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
