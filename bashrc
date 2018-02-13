@@ -17,8 +17,11 @@ export LC_ALL="en_US.utf8"
 
 # Welcome message
 date
-# Show the weather
-curl -s wttr.in/Raleigh | head -7
+# Show the weather if we're on the Internet
+if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+	curl -s wttr.in/Raleigh | head -7
+fi
+
 [ -f /usr/games/fortune ] && /usr/games/fortune
 
 # prompt, including git info
