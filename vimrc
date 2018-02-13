@@ -34,6 +34,8 @@ endif
 " Plugin Section
 """"""""""""""""
 " Pathogen
+filetype on
+filetype off
 call pathogen#infect()
 filetype plugin indent on	" Has to happen after the pathogen line
 
