@@ -19,7 +19,7 @@ export LC_ALL="en_US.utf8"
 date
 # Show the weather if we're on the Internet
 if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
-	curl -s wttr.in/Raleigh | head -7
+	curl -s wttr.in/Raleigh+NC | head -7
 fi
 
 [ -f /usr/games/fortune ] && /usr/games/fortune
