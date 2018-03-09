@@ -8,7 +8,7 @@ function setup-environment() {
 	arch=${1}
 	glibc_ver=${2}
 
-	TC_BASE_BASE=/projects/hnd/tools/linux
+	TC_BASE_BASE=/projects/bca/tools/linux
 	GCC=crosstools-${arch}-gcc-5.3
 	KERNEL=linux-4.1
 	GLIBC=glibc-2.${glibc_ver}
@@ -29,7 +29,7 @@ function setup-u-boot() {
 	arch=${1}
 	glibc_ver=${2}
 
-	TC_BASE_BASE=/projects/hnd/tools/linux
+	TC_BASE_BASE=/projects/bca/tools/linux
 	GCC=crosstools-${arch}-gcc-5.3
 	KERNEL=linux-4.1
 	GLIBC=glibc-2.${glibc_ver}
@@ -38,7 +38,6 @@ function setup-u-boot() {
 	export ARCH=arm64
 	export TOOLCHAIN_BASE=${TC_BASE_BASE}/BCG
 	export LD_LIBRARY_PATH=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/lib:$LD_LIBRARY_PATH
-	TC_BASE_BASE=/projects/hnd/tools/linux
 	export PATH=${PHOME}/bin:${TC_BASE_BASE}/hndtools-armeabi-2013.11/bin:$PATH
 	export CROSS_COMPILE=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/bin/aarch64-buildroot-linux-gnu-
 }
@@ -50,14 +49,18 @@ function populate-impl51() {
 }
 
 # Project home
-export PHOME='/projects/bca_ent_wlan_ext02/esdk_wksp/ko889424'
+export PHOME='/projects/bcawlan_ext02/work/ko889424'
 alias cdp='cd $PHOME'
 
-export PATH=/tools/bin:/tools/nwsoft/bin:/projects/hnd/tools/bin:${PATH}:${PHOME}/bin
+export PATH=${PHOME}/install/bin:/tools/bin:/tools/nwsoft/bin:/projects/bca/tools/bin:${PATH}:${PHOME}/bin
 
-export GIT_PROMPT_THEME=Single_line_Solarized
-export GIT_PROMPT_FETCH_REMOTE_STATUS=0
-export GIT_PROMPT_SHOW_UNTRACKED_FILES=no
+unset PS1
+unset GIT_PS1_SHOWDIRTYSTATE
+GIT_PROMPT_FETCH_REMOTE_STATUS=0
+GIT_PROMPT_SHOW_UPSTREAM=0
+GIT_PROMPT_SHOW_UNTRACKED_FILES=no
+GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0
+GIT_PROMPT_THEME=Single_line_Solarized
 source ~/.bash-git-prompt/gitprompt.sh
 
 [[ -f ~/.git-completion.bash ]] && source ~/.git-completion.bash
