@@ -39,6 +39,12 @@ function ksub() {
 	/tools/bin/bsub -q ${QUEUE} -R osmajor='RHEL6 span[hosts=1]' -sp 120 -n 8 -Is "$@"
 }
 
+# export these functions to be used in other scripts
+export -f setup_environment
+export -f setup_u_boot
+export -f populate_impl51
+export -f ksub
+
 alias cdp='cd $PHOME'
 export SUBVERSIONVER=1.7.8
 
