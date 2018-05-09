@@ -72,6 +72,16 @@ function mountnice() {
     (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t
 }
 
+# pathmunge to remove duplicates from PATH
+pathmunge () {
+	if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
+		if [ "$2" = "after" ] ; then
+			PATH=$PATH:$1
+		else
+			PATH=$1:$PATH
+		fi
+	fi
+}
 # ls fix for solarized dircolors. From
 # http://michaelheap.com/getting-solarized-working-on-ubuntu/
 if [ -x /usr/bin/dircolors ];
