@@ -18,7 +18,7 @@ function setup_environment() {
 	export LD_LIBRARY_PATH=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/lib:$LD_LIBRARY_PATH
 	pathmunge ${TC_BASE_BASE}/hndtools-armeabi-2013.11/bin after
 	# optional
-	pathmunge ${TOOLCHAIN_BASE}/crosstools-aarch64-${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/bin/ after
+	pathmunge ${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/bin/ after
 }
 
 function setup_u_boot() {
@@ -48,9 +48,9 @@ export -f ksub
 alias cdp='cd $PHOME'
 export SUBVERSIONVER=1.7.8
 
+pathmunge /tools/bin
 pathmunge ${PHOME}/bin
 pathmunge ${PHOME}/install/bin
-pathmunge /tools/bins after
 pathmunge /tools/nwsoft/bin after
 pathmunge /projects/${ORG}/tools/bin after
 
