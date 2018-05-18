@@ -1,18 +1,15 @@
 function setup_environment() {
 
-	if [ "$#" -lt 2 ]; then
-		echo "${FUNCNAME[0]} arch glibc_ver (arch=arm, aarch64; glibc_ver=22, 24)"
-		return 0
-	fi
-
-	arch=${1}
-	glibc_ver=${2}
+	arch=aarch64
+	gcc_ver=${1-5.5}
+	glibc_ver=${2-26}
+	binutils_ver=${3-28.1}
 
 	TC_BASE_BASE=/projects/${ORG}/tools/linux
-	GCC=crosstools-${arch}-gcc-5.3
+	GCC=crosstools-${arch}-gcc-${gcc_ver}
 	KERNEL=linux-4.1
 	GLIBC=glibc-2.${glibc_ver}
-	BINUTILS=binutils-2.25
+	BINUTILS=binutils-2.${binutils_ver}
 
 	export TOOLCHAIN_BASE=${TC_BASE_BASE}/BCG
 	export LD_LIBRARY_PATH=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/lib:$LD_LIBRARY_PATH
