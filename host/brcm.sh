@@ -43,7 +43,7 @@ export -f populate_impl51
 export -f ksub
 
 alias cdp='cd $PHOME'
-export SUBVERSIONVER=1.7.8
+export SUBVERSIONVER=1.8.14
 
 pathmunge /tools/bin
 pathmunge ${PHOME}/bin
