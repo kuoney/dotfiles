@@ -47,11 +47,11 @@ export -f ksub
 alias cdp='cd $PHOME'
 export SUBVERSIONVER=1.8.14
 
-pathmunge /tools/bin
-pathmunge ${PHOME}/bin
-pathmunge ${PHOME}/install/bin
-pathmunge /tools/nwsoft/bin after
-pathmunge /projects/${ORG}/tools/bin after
+[ -d /tools/bin ] &&			pathmunge /tools/bin
+[ -d ${PHOME}/bin ] &&			pathmunge ${PHOME}/bin
+[ -d ${PHOME}/install/bin ] &&		pathmunge ${PHOME}/install/bin
+[ -d /tools/nwsoft/bin ] &&		pathmunge /tools/nwsoft/bin after
+[ -d /projects/${ORG}/tools/bin ] &&	pathmunge /projects/${ORG}/tools/bin after
 
 unset PS1
 unset GIT_PS1_SHOWDIRTYSTATE
