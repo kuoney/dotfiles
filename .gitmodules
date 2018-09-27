@@ -1,24 +1,24 @@
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
-	url = https://github.com/tpope/vim-fugitive.git
+	url = git://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/DirDiff"]
 	path = vim/bundle/DirDiff
-	url = https://github.com/duellj/DirDiff.vim.git
+	url = git://github.com/duellj/DirDiff.vim.git
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
+	url = git://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
+	url = git://github.com/scrooloose/syntastic.git
 [submodule "vim/bundle/threesome"]
 	path = vim/bundle/threesome
-	url = https://github.com/sjl/threesome.vim.git
+	url = git://github.com/sjl/threesome.vim.git
 [submodule "vim/bundle/cscope_maps"]
 	path = vim/bundle/cscope_maps
-	url = https://github.com/chazy/cscope_maps.git
+	url = git://github.com/chazy/cscope_maps.git
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
+	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/bundle/vim-bitbake"]
 	path = vim/bundle/vim-bitbake
-	url = https://github.com/kergoth/vim-bitbake
+	url = git://github.com/kergoth/vim-bitbake
