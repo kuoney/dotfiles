@@ -27,13 +27,15 @@ function setup_u_boot() {
 }
 
 function populate_impl51() {
+	tag=${1-KUDU_BRANCH_17_10}
 	cd bcmdrivers/broadcom/net/wl/impl51 &&
-	hnd -V scm co -t KUDU_BRANCH_17_10 -d . linux-4.1.0-router &&
+	hnd -V scm co -t ${tag} -d . linux-4.1.0-router &&
 	cd ../../../../../
 }
 
 function ksub() {
-	/tools/bin/bsub -q ${QUEUE} -R osmajor='RHEL6 span[hosts=1]' -sp 120 -n 8 -Is "$@"
+	jobs=${jobs=8}
+	/tools/bin/bsub -q ${QUEUE} -R osmajor='RHEL6 span[hosts=1]' -sp 120 -n ${jobs} -Is "$@"
 }
 
 # export these functions to be used in other scripts
