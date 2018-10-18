@@ -1,9 +1,9 @@
 function setup_environment() {
 
-	arch=aarch64
-	gcc_ver=${1-5.5}
-	glibc_ver=${2-26}
-	binutils_ver=${3-28.1}
+	arch=${1-aarch64}
+	gcc_ver=${2-5.5}
+	glibc_ver=${3-26}
+	binutils_ver=${4-28.1}
 
 	TC_BASE_BASE=/projects/${ORG}/tools/linux
 	GCC=crosstools-${arch}-gcc-${gcc_ver}
@@ -20,9 +20,14 @@ function setup_environment() {
 
 function setup_u_boot() {
 
+	arch=${1-aarch64}
 	if setup_environment $@; then
-		export CROSS_COMPILE=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/bin/aarch64-buildroot-linux-gnu-
-		export ARCH=arm64
+		export ARCH=${arch}
+		export CROSS_COMPILE=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/bin/${arch}-buildroot-linux-gnueabi-
+		if [ "${arch}"x = "aarch64x" ]; then
+			export ARCH=arm64
+			export CROSS_COMPILE=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/bin/${arch}-buildroot-linux-gnu-
+		fi
 	fi
 }
 

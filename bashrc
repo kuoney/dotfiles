@@ -5,9 +5,6 @@
 [ -f /etc/bashrc ] && . /etc/bashrc
 [ -f /etc/bash.bashrc ] && . /etc/bash.bashrc
 
-# Return if shell is non-interactive
-[ -z "$PS1" ] && return
-
 # language - so gcc doesn't throw up weird characters !
 export LANG="en_US.utf8"
 export LC_ALL="en_US.utf8"
@@ -15,17 +12,22 @@ export LC_ALL="en_US.utf8"
 # Clever tab completion
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 
-# Welcome message
-date
-# Show the weather if we're on the Internet
-if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
-	curl -s wttr.in/Raleigh+NC | head -7
-fi
+# Welcome message only if interactive
+if [[ $- == *i* ]]; then
+	# Welcome message
+	date
+	# Show the weather if we're on the Internet
+	if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+		curl -s wttr.in/Raleigh+NC | head -7
+	fi
 
-[ -f /usr/games/fortune ] && /usr/games/fortune
+	[ -f /usr/games/fortune ] && /usr/games/fortune
+fi
 
 # prompt, including git info
 export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+# Return if shell is non-interactive
+# [ -z "$PS1" ] && return
 export GIT_PS1_SHOWDIRTYSTATE=1
 # Do not try to launch gnome-ssh-askpass when pushing commits
 unset SSH_ASKPASS
@@ -41,7 +43,6 @@ alias grep='grep --color=tty -d skip'
 # editing
 export EDITOR=vim	# use vim for errything!
 set -o vi			# including the command line
-
 # history control
 export HISTSIZE=20000
 export HISTCONTROL=ignoreboth:erasedups
@@ -82,11 +83,13 @@ pathmunge () {
 		fi
 	fi
 }
+export -f pathmunge
+
 # ls fix for solarized dircolors. From
 # http://michaelheap.com/getting-solarized-working-on-ubuntu/
-if [ -x /usr/bin/dircolors ];
-	then test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-fi
+#if [ -x /usr/bin/dircolors ];
+#	then test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+#fi
 
 # add local bin to the PATH, usually for repo
 if [ -d "${HOME}/bin" ];
