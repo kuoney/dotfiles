@@ -2,33 +2,28 @@ function setup_environment() {
 
 	arch=${1-aarch64}
 	gcc_ver=${2-5.5}
-	glibc_ver=${3-26}
-	binutils_ver=${4-28.1}
+	glibc_ver=${3-2.26}
+	binutils_ver=${4-2.28.1}
 
 	TC_BASE_BASE=/projects/${ORG}/tools/linux
 	GCC=crosstools-${arch}-gcc-${gcc_ver}
 	KERNEL=linux-4.1
-	GLIBC=glibc-2.${glibc_ver}
-	BINUTILS=binutils-2.${binutils_ver}
+	GLIBC=glibc-${glibc_ver}
+	BINUTILS=binutils-${binutils_ver}
 
 	export TOOLCHAIN_BASE=${TC_BASE_BASE}/BCG
-	export LD_LIBRARY_PATH=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/lib:$LD_LIBRARY_PATH
+	export LD_LIBRARY_PATH=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/lib
 	pathmunge ${TC_BASE_BASE}/hndtools-armeabi-2013.11/bin after
 	# optional
 	pathmunge ${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/bin/ after
-}
 
-function setup_u_boot() {
+	# u-boot needs CROSS_COMPILE
+	CC_PREFIX=buildroot-linux-gnueabi-
 
-	arch=${1-aarch64}
-	if setup_environment $@; then
-		export ARCH=${arch}
-		export CROSS_COMPILE=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/bin/${arch}-buildroot-linux-gnueabi-
-		if [ "${arch}"x = "aarch64x" ]; then
-			export ARCH=arm64
-			export CROSS_COMPILE=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/bin/${arch}-buildroot-linux-gnu-
-		fi
+	if [ "${arch}"x = "aarch64x" ]; then
+		CC_PREFIX=buildroot-linux-gnu-
 	fi
+	export CROSS_COMPILE=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/bin/${arch}-${CC_PREFIX}
 }
 
 function populate_impl51() {
@@ -45,7 +40,6 @@ function ksub() {
 
 # export these functions to be used in other scripts
 export -f setup_environment
-export -f setup_u_boot
 export -f populate_impl51
 export -f ksub
 
