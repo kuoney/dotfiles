@@ -97,5 +97,10 @@ then
 	export PATH=${PATH}:${HOME}/bin
 fi
 
-[ -f ${HOME}/.dotfiles/host/$(domainname).sh ] && .  ${HOME}/.dotfiles/host/$(domainname).sh
-[ -f ${HOME}/.dotfiles/host/$(hostname).sh ] && .  ${HOME}/.dotfiles/host/$(hostname).sh
+command -v domainname > /dev/null 2>&1 && \
+	[ -f ${HOME}/.dotfiles/host/$(domainname).sh ] && \
+		.  ${HOME}/.dotfiles/host/$(domainname).sh
+
+command -v hostname > /dev/null 2>&1 && \
+	[ -f ${HOME}/.dotfiles/host/$(hostname).sh ] && \
+		.  ${HOME}/.dotfiles/host/$(hostname).sh
