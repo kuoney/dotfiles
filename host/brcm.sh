@@ -2,12 +2,13 @@ function setup_environment() {
 
 	arch=${1-aarch64}
 	gcc_ver=${2-5.5}
-	glibc_ver=${3-2.26}
-	binutils_ver=${4-2.28.1}
+	kernel_ver=${3-4.1}
+	glibc_ver=${4-2.26}
+	binutils_ver=${5-2.28.1}
 
 	TC_BASE_BASE=/projects/${ORG}/tools/linux
 	GCC=crosstools-${arch}-gcc-${gcc_ver}
-	KERNEL=linux-4.1
+	KERNEL=linux-${kernel_ver}
 	GLIBC=glibc-${glibc_ver}
 	BINUTILS=binutils-${binutils_ver}
 
@@ -29,13 +30,23 @@ function setup_environment() {
 function populate_impl51() {
 	tag=${1-KUDU_BRANCH_17_10}
 	cd bcmdrivers/broadcom/net/wl/impl51 &&
-	hnd -V scm co -t ${tag} -d . linux-4.1.0-router &&
+	hnd -V scm co --direct -t ${tag} -d . linux-4.1.0-router &&
 	cd ../../../../../
 }
 
 function ksub() {
 	jobs=${jobs=8}
 	/tools/bin/bsub -q ${QUEUE} -R osmajor='RHEL6 span[hosts=1]' -sp 120 -n ${jobs} -Is "$@"
+}
+
+function pmake() {
+	jobs=$1
+	if  [[ "$jobs" -ge 0 ]]; then
+		shift
+		make "$@" BRCM_MAX_JOBS=${jobs}
+	else
+		make "$@"
+	fi
 }
 
 # export these functions to be used in other scripts
@@ -64,3 +75,6 @@ source ~/.bash-git-prompt/gitprompt.sh
 [[ -f ~/.git-completion.bash ]] && source ~/.git-completion.bash
 
 export BASH_ENV=$HOME/.bashrc
+
+# BCA tools related stuff
+pathmunge /projects/bca/tools/linux/bin/ after
