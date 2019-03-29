@@ -1,42 +1,26 @@
 function setup_environment() {
 
-	arch=${1-aarch64}
-	gcc_ver=${2-5.5}
-	kernel_ver=${3-4.1}
-	glibc_ver=${4-2.26}
-	binutils_ver=${5-2.28.1}
+	GCC=crosstools-${1-aarch64}-gcc-${2-5.5}
+	KERNEL=linux-${3-4.1}
+	GLIBC=glibc-${4-2.26}
+	BINUTILS=binutils-${5-2.28.1}
 
-	TC_BASE_BASE=/projects/${ORG}/tools/linux
-	GCC=crosstools-${arch}-gcc-${gcc_ver}
-	KERNEL=linux-${kernel_ver}
-	GLIBC=glibc-${glibc_ver}
-	BINUTILS=binutils-${binutils_ver}
-
-	export TOOLCHAIN_BASE=${TC_BASE_BASE}/BCG
+	export TOOLCHAIN_BASE=/projects/${ORG}/tools/linux/BCG
 	export LD_LIBRARY_PATH=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/lib
-	pathmunge ${TC_BASE_BASE}/hndtools-armeabi-2013.11/bin after
-	# optional
+	# optional to use other tools like objcopy
 	pathmunge ${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/bin/ after
 
-	# u-boot needs CROSS_COMPILE
-	CC_PREFIX=buildroot-linux-gnueabi-
-
-	if [ "${arch}"x = "aarch64x" ]; then
-		CC_PREFIX=buildroot-linux-gnu-
-	fi
-	export CROSS_COMPILE=${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/bin/${arch}-${CC_PREFIX}
+	# optional, for building u-boot separately
+	[[ "${1-aarch64}" == "aarch64" ]] && CC_PREFIX=buildroot-linux-gnu- || CC_PREFIX=buildroot-linux-gnueabi-
+	export CROSS_COMPILE=${1-aarch64}-${CC_PREFIX}
 }
 
-function populate_impl51() {
-	tag=${1-KUDU_BRANCH_17_10}
-	cd bcmdrivers/broadcom/net/wl/impl51 &&
-	hnd -V scm co --direct -t ${tag} -d . linux-4.1.0-router &&
-	cd ../../../../../
+function populate_impl() {
+	hnd -V scm co --direct -t ${1-KUDU_BRANCH_17_10} -d bcmdrivers/broadcom/net/wl/impl${2-51} linux-4.1.0-router
 }
 
 function ksub() {
-	jobs=${jobs=8}
-	/tools/bin/bsub -q ${QUEUE} -R osmajor='RHEL6 span[hosts=1]' -sp 120 -n ${jobs} -Is "$@"
+	/tools/bin/bsub -q ${QUEUE} -R osmajor='RHEL6 span[hosts=1]' -sp 120 -n ${jobs-8} -Is "$@"
 }
 
 function pmake() {
@@ -62,6 +46,7 @@ export SUBVERSIONVER=1.8.14
 [ -d ${PHOME}/install/bin ] &&		pathmunge ${PHOME}/install/bin
 [ -d /tools/nwsoft/bin ] &&		pathmunge /tools/nwsoft/bin after
 [ -d /projects/${ORG}/tools/bin ] &&	pathmunge /projects/${ORG}/tools/bin after
+[ -d /projects/${ORG}/tools/linux/bin/ ] && pathmunge /projects/${ORG}/tools/linux/bin/ after
 
 unset PS1
 unset GIT_PS1_SHOWDIRTYSTATE
@@ -75,6 +60,3 @@ source ~/.bash-git-prompt/gitprompt.sh
 [[ -f ~/.git-completion.bash ]] && source ~/.git-completion.bash
 
 export BASH_ENV=$HOME/.bashrc
-
-# BCA tools related stuff
-pathmunge /projects/bca/tools/linux/bin/ after
