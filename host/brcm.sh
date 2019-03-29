@@ -35,7 +35,7 @@ function pmake() {
 
 # export these functions to be used in other scripts
 export -f setup_environment
-export -f populate_impl51
+export -f populate_impl
 export -f ksub
 
 alias cdp='cd $PHOME'
