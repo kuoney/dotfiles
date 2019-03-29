@@ -2,6 +2,13 @@
 # required really.
 unalias ls
 
+# For MacPorts
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# For brew
+export PATH="/usr/local/bin:$PATH"
+# For my own utils
+export PATH="$PATH:/Volumes/Code/git/esdk-misc-utils"
+
 # __git_ps1 doesn't yet work.
 export PS1=
 
@@ -27,5 +34,3 @@ PERL_MB_OPT="--install_base \"/Users/ko889424/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/ko889424/perl5"; export PERL_MM_OPT;
 
 eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
-# For MacPorts
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
