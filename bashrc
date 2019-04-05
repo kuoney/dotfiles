@@ -87,9 +87,13 @@ export -f pathmunge
 
 # ls fix for solarized dircolors. From
 # http://michaelheap.com/getting-solarized-working-on-ubuntu/
-#if [ -x /usr/bin/dircolors ];
-#	then test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-#fi
+# but this seg-faults on gnome-shell on centos. So run this only if
+# on ubuntu
+if lsb_release -a 2> /dev/null | grep Ubuntu > /dev/null ; then
+	if [ -x /usr/bin/dircolors ];
+		then test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	fi
+fi
 
 # add local bin to the PATH, usually for repo
 if [ -d "${HOME}/bin" ];
