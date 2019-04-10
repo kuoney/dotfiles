@@ -90,8 +90,10 @@ export -f pathmunge
 # but this seg-faults on gnome-shell on centos. So run this only if
 # on ubuntu
 if lsb_release -a 2> /dev/null | grep Ubuntu > /dev/null ; then
-	if [ -x /usr/bin/dircolors ];
-		then test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	if ! xhost >& /dev/null; then
+		if [ -x /usr/bin/dircolors ];
+			then test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+		fi
 	fi
 fi
 
