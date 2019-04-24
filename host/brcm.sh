@@ -15,6 +15,22 @@ function setup_environment() {
 	export CROSS_COMPILE=${1-aarch64}-${CC_PREFIX}
 }
 
+function setup_uboot() {
+
+	GCC=crosstools-${1-aarch64}-gcc-${2-5.5}
+	KERNEL=linux-${3-4.1}
+	GLIBC=glibc-${4-2.26}
+	BINUTILS=binutils-${5-2.28.1}
+
+	export TOOLCHAIN_BASE=/opt/toolchains
+	# optional to use other tools like objcopy
+	pathmunge ${TOOLCHAIN_BASE}/${GCC}-${KERNEL}-${GLIBC}-${BINUTILS}/usr/bin/ after
+
+	# optional, for building u-boot separately
+	[[ "${1-aarch64}" == "aarch64" ]] && CC_PREFIX=buildroot-linux-gnu- || CC_PREFIX=buildroot-linux-gnueabi-
+	export CROSS_COMPILE=${1-aarch64}-${CC_PREFIX}
+}
+
 function populate_impl() {
 	hnd -V scm co --direct -t ${1-KUDU_BRANCH_17_10} -d bcmdrivers/broadcom/net/wl/impl${2-51} linux-4.1.0-router
 }
@@ -35,6 +51,7 @@ function pmake() {
 
 # export these functions to be used in other scripts
 export -f setup_environment
+export -f setup_uboot
 export -f populate_impl
 export -f ksub
 
