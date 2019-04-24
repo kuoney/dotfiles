@@ -9,3 +9,4 @@ pathmunge /usr/lib/ccache/ before
 
 # for hnd, precommit etc. tools
 pathmunge /opt/bca/bin/ after
+pathmunge /home/ko889424/code/git/esdk-misc-utils after
