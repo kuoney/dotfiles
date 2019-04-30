@@ -35,8 +35,8 @@ function populate_impl() {
 	hnd -V scm co --direct -t ${1-KUDU_BRANCH_17_10} -d bcmdrivers/broadcom/net/wl/impl${2-51} linux-4.1.0-router
 }
 
-function ksub() {
-	/tools/bin/bsub -q ${QUEUE} -R osmajor='RHEL6 span[hosts=1]' -sp 120 -n ${jobs-8} -Is "$@"
+function lsfmake() {
+	/tools/bin/bsub -q ${QUEUE} -R osmajor='RHEL6 span[hosts=1]' -sp 120 -n ${jobs-8} -Is "make $@ BRCM_MAX_JOBS=${jobs-8}"
 }
 
 function pmake() {
@@ -53,7 +53,7 @@ function pmake() {
 export -f setup_environment
 export -f setup_uboot
 export -f populate_impl
-export -f ksub
+export -f lsfmake
 
 alias cdp='cd $PHOME'
 export SUBVERSIONVER=1.8.14
