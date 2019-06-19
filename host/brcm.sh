@@ -57,7 +57,7 @@ export -f lsfmake
 
 alias cdp='cd $PHOME'
 export SUBVERSIONVER=1.8.14
-export P4VER=2018.4
+export P4VER=2018.2
 
 [ -d /tools/bin ] &&			pathmunge /tools/bin
 [ -d ${PHOME}/bin ] &&			pathmunge ${PHOME}/bin
@@ -65,6 +65,8 @@ export P4VER=2018.4
 [ -d /tools/nwsoft/bin ] &&		pathmunge /tools/nwsoft/bin after
 [ -d /projects/${ORG}/tools/bin ] &&	pathmunge /projects/${ORG}/tools/bin after
 [ -d /projects/${ORG}/tools/linux/bin/ ] && pathmunge /projects/${ORG}/tools/linux/bin/ after
+[ -d ${PHOME}/tools/bin ] &&		pathmunge $PHOME/tools/bin before
+[ -d ${PHOME}/git/esdk-misc-utils ] &&	pathmunge $PHOME/git/esdk-misc-utils after
 
 unset PS1
 unset GIT_PS1_SHOWDIRTYSTATE
