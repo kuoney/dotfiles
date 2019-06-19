@@ -58,6 +58,7 @@ export -f lsfmake
 alias cdp='cd $PHOME'
 export SUBVERSIONVER=1.8.14
 export P4VER=2018.2
+export NOMINIFY=yes
 
 [ -d /tools/bin ] &&			pathmunge /tools/bin
 [ -d ${PHOME}/bin ] &&			pathmunge ${PHOME}/bin
