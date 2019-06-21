@@ -14,4 +14,10 @@ fi
 # we can have the same hash no matter where we run git p4 rebase
 export TZ="/usr/share/zoneinfo/America/New_York"
 
+# Use the cached toolchain and set the cache dir
+export TOOLCHAIN_BASE=/opt/toolchains/newcached
+export CCACHE_DIR=/auto/workspace_02/ko889424/ccache
+# make 4.2.1 is broken
+export MAKEVER=3.82
+
 source $HOME/.dotfiles/host/brcm.sh
