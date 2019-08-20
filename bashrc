@@ -104,11 +104,3 @@ command -v domainname > /dev/null 2>&1 && \
 command -v hostname > /dev/null 2>&1 && \
 	[ -f ${HOME}/.dotfiles/host/$(hostname).sh ] && \
 		.  ${HOME}/.dotfiles/host/$(hostname).sh
-
-# add local bin to the PATH, usually for repo (or bad IT stuff)
-# and put it in front of everything, at the very end of bashrc
-if [ -d "${HOME}/bin" ];
-then
-	pathmunge ${HOME}/bin before
-fi
-

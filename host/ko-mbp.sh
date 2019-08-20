@@ -34,3 +34,5 @@ PERL_MB_OPT="--install_base \"/Users/ko889424/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/ko889424/perl5"; export PERL_MM_OPT;
 
 eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+export PHOME=/Volumes/Code
+alias cdp='cd $PHOME'
