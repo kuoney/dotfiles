@@ -18,7 +18,7 @@ if [[ $- == *i* ]]; then
 	date
 	# Show the weather if we're on the Internet
 	if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
-		curl -s wttr.in/Raleigh+NC?0qF
+		curl -m 3 -s wttr.in/Raleigh+NC?0qF
 	fi
 
 	[ -f /usr/games/fortune ] && /usr/games/fortune
@@ -83,6 +83,11 @@ if lsb_release -a 2> /dev/null | grep Ubuntu > /dev/null ; then
 			then test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 		fi
 	fi
+fi
+
+# direxpand does not seem to work with bash 4.2
+if ((BASH_VERSINFO[0] >= 4)) && ((BASH_VERSINFO[1] >= 2))
+	then shopt -s direxpand
 fi
 
 command -v domainname > /dev/null 2>&1 && \
