@@ -32,6 +32,14 @@ source ~/.bash-git-prompt/gitprompt.sh
 
 export BASH_ENV=$HOME/.bashrc
 source ${PHOME}/git/esdk-misc-utils/build/esdk.sh
+function pf() {
+	pmake "$@" && flash.sh -m local -r
+}
+export -f pf
+function mf() {
+	monmake "$@" && flash.sh -m local -r
+}
+export -f mf
 
 [ -d ${PHOME}/bin ] &&			pathmunge ${PHOME}/bin before
 [ -d ${PHOME}/install/bin ] &&		pathmunge ${PHOME}/install/bin
