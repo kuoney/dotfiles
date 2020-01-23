@@ -41,6 +41,6 @@ function mf() {
 }
 export -f mf
 
-[ -d ${PHOME}/bin ] &&			pathmunge ${PHOME}/bin before
-[ -d ${PHOME}/install/bin ] &&		pathmunge ${PHOME}/install/bin
-[ -d ${PHOME}/tools/bin ] &&		pathmunge $PHOME/tools/bin before
+[ -d ${PHOME}/bin ] &&			pathpurge ${PHOME}/bin && pathmunge ${PHOME}/bin before
+[ -d ${PHOME}/install/bin ] &&		pathpurge ${PHOME}/install/bin &&   pathmunge ${PHOME}/install/bin
+[ -d ${PHOME}/tools/bin ] &&		pathpurge ${PHOME}/tools/bin && pathmunge ${PHOME}/tools/bin before
