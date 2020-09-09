@@ -28,6 +28,7 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
 fi
 
 [ -f /usr/games/fortune ] && /usr/games/fortune
+[ -f ~/.git-prompt.sh ] && source ~/.git-prompt.sh
 
 # prompt, including git info
 export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
