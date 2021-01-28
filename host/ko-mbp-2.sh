@@ -50,4 +50,4 @@ export -f pathmunge
 pathmunge $PHOME/git/esdk-misc-utils/bin before
 
 # add precommit and hnd from wlan-utils
-pathmunge /usr/local/opt/wlan-utils/bin/bca/bin/ before
+pathmunge /usr/local/opt/wlan-utils/bca/bin/ before
