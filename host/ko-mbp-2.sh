@@ -2,12 +2,8 @@
 # required really.
 unalias ls
 
-# For MacPorts
-# export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # For brew
 export PATH="/usr/local/bin:$PATH"
-# For my own utils
-# export PATH="$PATH:/Volumes/Code/git/esdk-misc-utils"
 
 # __git_ps1 doesn't yet work.
 export PS1=
