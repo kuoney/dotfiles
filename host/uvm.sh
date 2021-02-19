@@ -10,7 +10,7 @@ source $HOME/.dotfiles/host/brcm.sh
 # for hnd, precommit etc. tools
 pathmunge /opt/bca/bin/ after
 pathmunge /home/ko889424/code/git/esdk-misc-utils after
-# export TOOLCHAIN_BASE=/opt/cached
+export TOOLCHAIN_BASE=/opt/cached
 
 # BBSX requires JAVA_HOME to be set
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
