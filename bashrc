@@ -31,7 +31,7 @@ fi
 [ -f ~/.git-prompt.sh ] && source ~/.git-prompt.sh
 
 # prompt, including git info
-export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+export PS1='\[\033[00m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]\[\033[00m\] $ '
 export GIT_PS1_SHOWDIRTYSTATE=1
 # Do not try to launch gnome-ssh-askpass when pushing commits
 unset SSH_ASKPASS
