@@ -13,9 +13,11 @@ function mountnice() {
     (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t
 }
 
-# language - so gcc doesn't throw up weird characters !
-export LANG="en_US.utf8"
-export LC_ALL="en_US.utf8"
+if [ ! "$(uname)" == "Darwin" ]; then
+	# language - so gcc doesn't throw up weird characters !
+	export LANG="en_US.utf8"
+	export LC_ALL="en_US.utf8"
+fi
 
 # Clever tab completion
 [ -f /etc/bash_completion ] && . /etc/bash_completion
