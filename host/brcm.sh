@@ -22,14 +22,6 @@ source ~/.bash-git-prompt/gitprompt.sh
 [[ -f ~/.git-completion.bash ]] && source ~/.git-completion.bash
 
 source ${PHOME}/git/esdk-misc-utils/build/esdk.sh
-function pf() {
-	pmake "$@" && flash.sh -m local -r
-}
-export -f pf
-function mf() {
-	monmake "$@" && flash.sh -m local -r
-}
-export -f mf
 
 [ -d ${PHOME}/bin ] &&			pathpurge ${PHOME}/bin && pathmunge ${PHOME}/bin before
 [ -d ${PHOME}/install/bin ] &&		pathpurge ${PHOME}/install/bin &&   pathmunge ${PHOME}/install/bin
