@@ -60,4 +60,4 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " DirDiff
 let g:DirDiffExcludes = ".git,.svn,CVS,*.class,*.exe,.*.swp,*.o"
-let g:DirDiffIgnore = "Id:,Revision:,Date:,$Id$"
+let g:DirDiffIgnore = "Id:,Revision:,Date:"
