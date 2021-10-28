@@ -46,6 +46,9 @@ alias egrep='egrep --color=tty -d skip'
 alias fgrep='fgrep --color=tty -d skip'
 alias grep='grep --color=tty -d skip'
 
+# colorful svndiff
+alias svndiff='svn diff | colordiff | less -RX'
+
 # editing
 export EDITOR=vim	# use vim for errything!
 set -o vi			# including the command line
