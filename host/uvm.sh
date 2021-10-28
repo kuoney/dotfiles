@@ -1,9 +1,10 @@
 export ORG=hnd
 export PHOME="${HOME}/code/"
 
+source $HOME/.dotfiles/host/brcm.sh
 # we have ccache for host enabled on this host so turn it
 # on for everyone.
-# pathmunge /usr/lib/ccache/ before
+pathmunge /usr/lib/ccache/ before
 
 # for hnd, precommit etc. tools
 pathmunge /opt/bca/bin/ after
@@ -15,3 +16,6 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # To build FD, we need to set UTILSDIR
 export UTILSDIR=$HOME/bin
+
+# rbt is installed in .local/bin
+pathmunge $HOME/.local/bin/ after
