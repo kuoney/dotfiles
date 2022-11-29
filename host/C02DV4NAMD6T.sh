@@ -43,6 +43,10 @@ pathmunge () {
 }
 export -f pathmunge
 
+function pathshow () {
+	tr ':' '\n' <<< "$PATH"
+}
+
 pathmunge $PHOME/git/esdk-misc-utils/bin before
 
 # add precommit and hnd from wlan-utils
