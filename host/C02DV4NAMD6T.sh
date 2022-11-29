@@ -2,9 +2,6 @@
 # required really.
 unalias ls
 
-# For brew
-export PATH="/usr/local/bin:$PATH"
-
 # __git_ps1 doesn't yet work.
 export PS1=
 
@@ -54,3 +51,7 @@ pathmunge /usr/local/opt/wlan-utils/bca/bin/ before
 
 # add python2.7 for 'hnd'
 pathmunge /Users/$USER/.pyenv/versions/2.7.18/bin after
+
+# For brew
+export PATH="/usr/local/bin:$PATH"
+
