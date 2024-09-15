@@ -22,11 +22,17 @@ fi
 # Clever tab completion
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 
-# Welcome message
-date
-# Show the weather if we're on the Internet
-if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
-	curl -m 3 -s wttr.in/Raleigh+NC?0qF
+# Show the date and weather once a day if we're on the Internet
+today=$(date +%d)
+last_login_date=$(lastlog -u $USER | tail -1 | tr -s ' ' | cut -f6 -d' ')
+
+if [[ "$today" -ne "$last_login_date" ]]
+then
+	# Welcome message
+	date
+	if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+		curl -m 3 -s wttr.in/Raleigh+NC?0qF
+	fi
 fi
 
 [ -f /usr/games/fortune ] && /usr/games/fortune
