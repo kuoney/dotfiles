@@ -23,7 +23,7 @@ fi
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 
 # Show the date and weather once a day if we're on the Internet
-today=$(date +%d)
+today=$(date +%-d)
 last_login_date=$(lastlog -u $USER | tail -1 | tr -s ' ' | cut -f6 -d' ')
 
 if [[ "$today" -ne "$last_login_date" ]]
@@ -54,7 +54,9 @@ alias grep='grep --color=tty -d skip'
 
 # colorful svndiff
 alias svndiff='svn diff | colordiff | less -RX'
+alias svnstat='svn diff | grep Index'
 alias hnddiff='hnd scm diff | colordiff | less -RX'
+alias hndstat='hnd scm diff | grep Index'
 
 # editing
 export EDITOR=vim	# use vim for errything!
