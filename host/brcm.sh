@@ -29,5 +29,3 @@ source ${PHOME}/git/esdk-misc-utils/build/esdk.sh
 [ -d /projects/hnd/tools/linux/bin/ ] &&	pathmunge /projects/hnd/tools/linux/bin/ after
 export PAHOLEVER=1.22
 export HTOPVER=2.2.0
-
-ccache -M 8.0G
