@@ -23,6 +23,9 @@ source ~/.bash-git-prompt/gitprompt.sh
 
 source ${PHOME}/git/esdk-misc-utils/build/esdk.sh
 
+# override toolchain base to use the better ccache and stuff
+export TOOLCHAIN_BASE=$PHOME/toolchains/newcached
+
 [ -d ${PHOME}/bin ] &&			pathpurge ${PHOME}/bin && pathmunge ${PHOME}/bin before
 [ -d ${PHOME}/install/bin ] &&		pathpurge ${PHOME}/install/bin &&   pathmunge ${PHOME}/install/bin
 [ -d ${PHOME}/tools/bin ] &&		pathpurge ${PHOME}/tools/bin && pathmunge ${PHOME}/tools/bin before
