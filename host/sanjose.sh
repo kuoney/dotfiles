@@ -13,3 +13,5 @@ fi
 # we can have the same hash no matter where we run git p4 rebase
 export TZ="/usr/share/zoneinfo/America/New_York"
 source $HOME/.dotfiles/host/brcm.sh
+
+eval "$(perl -I$PHOME/tools/perl -Mlocal::lib=$PHOME/tools/perl)"
