@@ -1,12 +1,24 @@
 alias cdp='cd $PHOME'
 
 ackwl() {
+
 	wltop=bcmdrivers/broadcom/net/wl
 	wlimpl=$(find "$wltop" -maxdepth 2 -type d -name main -printf "%h\n")
 	if [ -z "$wlimpl" ]; then
 		echo "no active wlimpl"
 	else
-		ack "${@:1}" "$wlimpl"
+		ack "${@:1}" "$wlimpl"/main
+	fi
+}
+
+ackdhd() {
+
+	wltop=bcmdrivers/broadcom/net/wl
+	wlimpl=$(find "$wltop" -maxdepth 2 -type d -name main -printf "%h\n")
+	if [ -z "$wlimpl" ]; then
+		echo "no active wlimpl"
+	else
+		ack "${@:1}" "$wlimpl"/sys
 	fi
 }
 
