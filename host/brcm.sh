@@ -1,4 +1,5 @@
 alias cdp='cd $PHOME'
+alias cats='highlight -O ansi --force'
 
 ackwl() {
 
