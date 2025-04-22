@@ -55,3 +55,6 @@ pathmunge /Users/$USER/.pyenv/versions/2.7.18/bin after
 # For brew
 export PATH="/usr/local/bin:$PATH"
 export PATH="$(brew --prefix)/opt/gawk/libexec/gnubin:$PATH"
+
+# For wlan-utils, 'hnd' command:
+export GUB_MODE=ACCESS
