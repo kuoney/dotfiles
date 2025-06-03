@@ -19,3 +19,6 @@ export UTILSDIR=$HOME/bin
 
 # rbt is installed in .local/bin
 pathmunge $HOME/.local/bin/ after
+
+# hnd requires this to be set otherwise it defaults to Mobility
+export GUB_MODE=ACCESS
