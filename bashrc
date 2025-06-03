@@ -24,7 +24,12 @@ fi
 
 # Show the date and weather once a day if we're on the Internet
 today=$(date +%-d)
-last_login_date=$(lastlog -u $USER | tail -1 | tr -s ' ' | cut -f6 -d' ')
+
+if [ "$(uname)" == "Darwin" ]; then
+	last_login_data=$(last -n 2 | tail -1 | xargs | cut -d' ' -f5)
+else
+	last_login_date=$(lastlog -u $USER | tail -1 | tr -s ' ' | cut -f6 -d' ')
+fi
 
 if [[ "$today" -ne "$last_login_date" ]]
 then
