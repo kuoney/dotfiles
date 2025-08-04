@@ -59,9 +59,9 @@ alias grep='grep --color=tty -d skip'
 
 # colorful svndiff
 alias svndiff='svn diff | colordiff | less -RX'
-alias svnstat='svn diff | grep Index'
+alias svnstat='svn diff | grep ^Index'
 alias hnddiff='hnd scm diff | colordiff | less -RX'
-alias hndstat='hnd scm diff | grep Index'
+alias hndstat='hnd scm diff | grep ^Index'
 
 # editing
 export EDITOR=vim	# use vim for errything!
