@@ -45,3 +45,6 @@ export TOOLCHAIN_BASE=$PHOME/toolchains/newcached
 [ -d /projects/hnd/tools/linux/bin/ ] &&	pathmunge /projects/hnd/tools/linux/bin/ after
 export PAHOLEVER=1.22
 export HTOPVER=2.2.0
+
+# Added by iiprep
+pathmunge /projects/bca/tools/wbin after
