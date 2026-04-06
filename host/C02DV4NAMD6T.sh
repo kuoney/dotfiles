@@ -50,11 +50,12 @@ pathmunge $PHOME/git/esdk-misc-utils/bin before
 pathmunge /usr/local/opt/wlan-utils/bca/bin/ before
 
 # add python2.7 for 'hnd'
-pathmunge /Users/$USER/.pyenv/versions/2.7.18/bin after
+# pathmunge /Users/$USER/.pyenv/versions/2.7.18/bin after
 
 # For brew
-export PATH="/usr/local/bin:$PATH"
-export PATH="$(brew --prefix)/opt/gawk/libexec/gnubin:$PATH"
+pathmunge /usr/local/bin before
+pathmunge $(brew --prefix)/opt/gawk/libexec/gnubin before
+pathmunge $(brew --prefix python)/libexec/bin after
 
 # For wlan-utils, 'hnd' command:
 export GUB_MODE=ACCESS
