@@ -48,3 +48,6 @@ export HTOPVER=2.2.0
 
 # Added by iiprep
 pathmunge /projects/bca/tools/wbin after
+
+# add bash completion for anvil. If absent, silently a no-op
+eval "$(register-python-argcomplete anvil)"
