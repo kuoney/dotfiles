@@ -51,3 +51,5 @@ pathmunge /projects/bca/tools/wbin after
 
 # add bash completion for anvil. If absent, silently a no-op
 eval "$(register-python-argcomplete anvil)"
+
+pathmunge /projects/wcc_sw_gallery/repos/mob-scm-rb-reviewbot/scripts/ after
