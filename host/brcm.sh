@@ -53,3 +53,12 @@ pathmunge /projects/bca/tools/wbin after
 eval "$(register-python-argcomplete anvil)"
 
 pathmunge /projects/wcc_sw_gallery/repos/mob-scm-rb-reviewbot/scripts/ after
+
+# reduce context
+export LS_COLORS="di=00;38;5;33:ln=01;38;5;37:ex=01;38;5;64:or=48;5;235;38;5;160:ow=48;5;235;38;5;33:tw=48;5;64;38;5;230:st=48;5;33;38;5;230:so=01;38;5;136:pi=01;38;5;136:bd=01;38;5;244:cd=01;38;5;244"
+# Unset exported shell functions from environment modules
+unset -f module
+unset -f _module_raw
+unset -f switchml
+unset -f scl
+unset -f ml
