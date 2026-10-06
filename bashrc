@@ -10,7 +10,7 @@
 
 # show mounts nicely aligned
 function mountnice() {
-    (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t
+	(echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t
 }
 
 if [ ! "$(uname)" == "Darwin" ]; then
@@ -60,8 +60,32 @@ alias grep='grep --color=tty -d skip'
 # colorful svndiff
 alias svndiff='svn diff | colordiff | less -RX'
 alias svnstat='svn diff | grep ^Index'
-alias hnddiff='hnd scm diff | colordiff | less -RX'
-alias hndstat='hnd scm diff | grep ^Index'
+
+# Core helper function to locate .wlbase and run commands from the project root
+_hnd_root_run() {
+	local target_file
+	local root_dir="$PWD"
+
+	# Search downwards recursively for .wlbase (limit to first match found)
+	target_file="$(find . -name .wlbase -print -quit 2>/dev/null)"
+
+	if [ -n "$target_file" ]; then
+		# Extract the directory path containing .wlbase
+		root_dir="$(dirname "$target_file")"
+	fi
+
+	# Run the passed command/pipeline from the discovered directory
+	(cd "$root_dir" && "$@")
+}
+
+# Wrapper functions using the explicit paths from your environment
+hndstat() {
+	_hnd_root_run hnd scm diff | grep '^Index'
+}
+
+hnddiff() {
+	_hnd_root_run hnd scm diff | colordiff | less -RX
+}
 
 # editing
 export EDITOR=vim	# use vim for errything!
@@ -107,8 +131,12 @@ fi
 
 command -v domainname > /dev/null 2>&1 && \
 	[ -f ${HOME}/.dotfiles/host/$(domainname).sh ] && \
-		.  ${HOME}/.dotfiles/host/$(domainname).sh
+		. ${HOME}/.dotfiles/host/$(domainname).sh
 
 command -v hostname > /dev/null 2>&1 && \
 	[ -f ${HOME}/.dotfiles/host/$(hostname).sh ] && \
-		.  ${HOME}/.dotfiles/host/$(hostname).sh
+		. ${HOME}/.dotfiles/host/$(hostname).sh
+
+# >>> Codex installer >>>
+export PATH="/home/ko889424/.local/bin:$PATH"
+# <<< Codex installer <<<

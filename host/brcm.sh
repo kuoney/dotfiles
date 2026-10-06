@@ -62,3 +62,4 @@ unset -f _module_raw
 unset -f switchml
 unset -f scl
 unset -f ml
+unset MODULEPATH_modshare XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS MODULEPATH XDG_DATA_DIRS GUESTFISH_RESTORE
