@@ -57,5 +57,8 @@ pathmunge /usr/local/bin before
 pathmunge $(brew --prefix)/opt/gawk/libexec/gnubin before
 pathmunge $(brew --prefix python)/libexec/bin after
 
+# for claude
+pathmunge $HOME/.local/bin after
+
 # For wlan-utils, 'hnd' command:
 export GUB_MODE=ACCESS
