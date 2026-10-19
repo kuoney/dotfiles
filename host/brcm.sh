@@ -63,3 +63,4 @@ unset -f switchml
 unset -f scl
 unset -f ml
 unset MODULEPATH_modshare XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS MODULEPATH XDG_DATA_DIRS GUESTFISH_RESTORE
+CODEX_CA_CERTIFICATE=~/openai_firewall.crt; export CODEX_CA_CERTIFICATE
