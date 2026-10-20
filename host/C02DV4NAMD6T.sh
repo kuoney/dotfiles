@@ -62,3 +62,7 @@ pathmunge $HOME/.local/bin after
 
 # For wlan-utils, 'hnd' command:
 export GUB_MODE=ACCESS
+
+# Artifactory setup
+export PIP_INDEX_URL="$(python3 -m pip config get global.index-url)"
+export HOMEBREW_PIP_INDEX_URL="$PIP_INDEX_URL"
