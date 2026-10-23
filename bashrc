@@ -136,7 +136,3 @@ command -v domainname > /dev/null 2>&1 && \
 command -v hostname > /dev/null 2>&1 && \
 	[ -f ${HOME}/.dotfiles/host/$(hostname).sh ] && \
 		. ${HOME}/.dotfiles/host/$(hostname).sh
-
-# >>> Codex installer >>>
-export PATH="/home/ko889424/.local/bin:$PATH"
-# <<< Codex installer <<<
