@@ -1,4 +1,3 @@
-export ORG=hnd
 export PHOME="${HOME}/code/"
 
 source $HOME/.dotfiles/host/brcm.sh

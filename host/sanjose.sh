@@ -1,6 +1,3 @@
-export ORG=bca
-export QUEUE=sj-bcasw
-
 if [ -d /auto/workspace_02/ko889424/ ]; then
 	export PHOME='/auto/workspace_02/ko889424'
 else
