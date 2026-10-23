@@ -7,7 +7,7 @@ pathmunge /usr/lib/ccache/ before
 
 # for hnd, precommit etc. tools
 pathmunge /opt/bca/bin/ after
-pathmunge /home/ko889424/code/git/esdk-misc-utils after
+pathmunge $PHOME/tools/bin after
 export TOOLCHAIN_BASE=/opt/cached
 
 # BBSX requires JAVA_HOME to be set

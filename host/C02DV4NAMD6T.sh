@@ -44,13 +44,10 @@ function pathshow () {
 	tr ':' '\n' <<< "$PATH"
 }
 
-pathmunge $PHOME/git/esdk-misc-utils/bin before
+pathmunge $PHOME/tools/bin before
 
 # add precommit and hnd from wlan-utils
 pathmunge /usr/local/opt/wlan-utils/bca/bin/ before
-
-# add python2.7 for 'hnd'
-# pathmunge /Users/$USER/.pyenv/versions/2.7.18/bin after
 
 # For brew
 pathmunge /usr/local/bin before
