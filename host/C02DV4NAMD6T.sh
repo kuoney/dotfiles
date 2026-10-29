@@ -1,3 +1,19 @@
+# pathmunge to remove duplicates from PATH
+pathmunge () {
+	if ! echo $PATH | /usr/bin/egrep -q "(^|:)$1($|:)" ; then
+		if [ "$2" = "after" ] ; then
+			PATH=$PATH:$1
+		else
+			PATH=$1:$PATH
+		fi
+	fi
+}
+export -f pathmunge
+
+pathshow() {
+	echo "$PATH" | tr ':' '\n'
+}
+
 # --color=tty option doesn't work. I don't know if that's even
 # required really.
 unalias ls
@@ -20,29 +36,11 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-PATH="/Users/ko889424/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/ko889424/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/ko889424/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/ko889424/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/ko889424/perl5"; export PERL_MM_OPT;
-
-export PHOME=/Volumes/Code
-alias cdp='cd $PHOME'
-# pathmunge to remove duplicates from PATH
-pathmunge () {
-	if ! echo $PATH | /usr/bin/egrep -q "(^|:)$1($|:)" ; then
-		if [ "$2" = "after" ] ; then
-			PATH=$PATH:$1
-		else
-			PATH=$1:$PATH
-		fi
-	fi
-}
-export -f pathmunge
-
-function pathshow () {
-	tr ':' '\n' <<< "$PATH"
-}
+PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
 pathmunge $PHOME/tools/bin before
 
@@ -63,3 +61,11 @@ export GUB_MODE=ACCESS
 # Artifactory setup
 export PIP_INDEX_URL="$(python3 -m pip config get global.index-url)"
 export HOMEBREW_PIP_INDEX_URL="$PIP_INDEX_URL"
+export PHOME=/Volumes/Code
+alias cdp='cd $PHOME'
+
+# Set up fzf shell integration
+eval "$(fzf --bash)"
+
+# Initialize zoxide
+eval "$(zoxide init bash)"
