@@ -136,3 +136,12 @@ command -v domainname > /dev/null 2>&1 && \
 command -v hostname > /dev/null 2>&1 && \
 	[ -f ${HOME}/.dotfiles/host/$(hostname).sh ] && \
 		. ${HOME}/.dotfiles/host/$(hostname).sh
+
+if command -v fzf >/dev/null 2>&1; then
+    eval "$(fzf --bash)"
+fi
+
+# Initialize zoxide only if the binary is present
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init bash)"
+fi

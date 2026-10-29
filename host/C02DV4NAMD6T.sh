@@ -63,9 +63,3 @@ export PIP_INDEX_URL="$(python3 -m pip config get global.index-url)"
 export HOMEBREW_PIP_INDEX_URL="$PIP_INDEX_URL"
 export PHOME=/Volumes/Code
 alias cdp='cd $PHOME'
-
-# Set up fzf shell integration
-eval "$(fzf --bash)"
-
-# Initialize zoxide
-eval "$(zoxide init bash)"
