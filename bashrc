@@ -138,10 +138,15 @@ command -v hostname > /dev/null 2>&1 && \
 		. ${HOME}/.dotfiles/host/$(hostname).sh
 
 if command -v fzf >/dev/null 2>&1; then
-    eval "$(fzf --bash)"
+	eval "$(fzf --bash)"
 fi
 
 # Initialize zoxide only if the binary is present
 if command -v zoxide >/dev/null 2>&1; then
-    eval "$(zoxide init bash)"
+	eval "$(zoxide init --cmd cd bash)"
+	cdl() {
+		zoxide query "$PWD" "$@" &>/dev/null && \
+			cd "$PWD" "$@" || \
+			echo "No matching directory found under $PWD" >&2
+	}
 fi
